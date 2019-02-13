@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
 body {
-    background: #f4ec00;
+    background: #ffe400;
+    font-family: Roboto;
+}
+
+.heading {
+    text-align: center;
+    padding: 20px 0;
+}
+.heading h1 {
+    color: #10313a;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+}
+.puzzle-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.piece {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
 }

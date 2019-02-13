@@ -1,8 +1,17 @@
+import { Puzzle } from '../component/puzzle'
+import { Title } from '../component/title'
+
 export class Home {
   
+  constructor () {
+    this.puzzle = new Puzzle()
+    this.title = new Title()
+  }
+  
   render () {
-    return`<section class="section">
-               <h1> Home page </h1>
-           </section>`
+    return`<div class="container">
+               ${this.title.render()}
+               ${this.puzzle.render()}
+           </div>`
   }
 }

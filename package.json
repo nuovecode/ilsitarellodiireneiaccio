@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --config=webpack.dev.js",
-    "dev": "node_modules/webpack/bin/webpack.js -d --env.NODE_ENV=development --progress --hide-modules --config=webpack.dev.js",
-    "prod": "node_modules/webpack/bin/webpack.js -p --env.NODE_ENV=production --env.production --progress --hide-modules --optimize-minimize --config=webpack.prod.js",
-    "test": "node_modules/jest/bin/jest.js"
+    "dev": "node_modules/webpack/bin/webpack.js -d  --env.NODE_ENV=development --progress --hide-modules --config=webpack.dev.js",
+    "prod": "node_modules/webpack/bin/webpack.js -p --env.NODE_ENV=production --env.production --progress --hide-modules --optimize-minimize --config=webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.37",
