@@ -1,0 +1,36 @@
+{
+  "name": "nuovecode",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --config=webpack.dev.js",
+    "dev": "node_modules/webpack/bin/webpack.js -d --env.NODE_ENV=development --progress --hide-modules --config=webpack.dev.js",
+    "prod": "node_modules/webpack/bin/webpack.js -p --env.NODE_ENV=production --env.production --progress --hide-modules --optimize-minimize --config=webpack.prod.js",
+    "test": "node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.37",
+    "@babel/preset-env": "^7.0.0-beta.37",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^8.0.0-beta.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.15.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "promise-polyfill": "^7.1.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
