@@ -53,7 +53,7 @@ export class Puzzle {
   
   render () {
     return`<div class="puzzle-container">
-              <div class="piece" draggable="true"></div>
+              <div class="piece one" draggable="true"></div>
               <div class="piece" draggable="true"></div>
               <div class="piece" draggable="true"></div>
               <div class="piece" draggable="true"></div>

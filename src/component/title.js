@@ -1,9 +1,9 @@
 export class Title {
   
   constructor () {
-    this.words = [ "Job Title_", "Web something", "Frontend deve", "Javascript devel", "mannagg" ];
+    this.words = ["Web something", "Frontend deve", "Javascript dev", "mannagg", "???" ];
     this.loopNum = 0;
-    this.interval = parseInt(2000, 10) || 2000;
+    this.interval = parseInt(1000, 10) || 1000;
     this.txt = '';
     this.isDeleting = false;
     this.typeText()
@@ -37,7 +37,7 @@ export class Title {
   render () {
     return`<div class="heading">
               <h1>Irene Iaccio</h1>
-              <div id="job-title">Web</div>
+              <div id="job-title"></div>
            </div>`
   }
 }

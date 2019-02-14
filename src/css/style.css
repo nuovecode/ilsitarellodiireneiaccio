@@ -2,6 +2,7 @@
 
 body {
     background: #ffe400;
+    color: #10313a;
     font-family: Roboto;
 }
 
@@ -10,23 +11,25 @@ body {
     padding: 20px 0;
 }
 .heading h1 {
-    color: #10313a;
     font-family: 'Orbitron', sans-serif;
     font-size: 50px;
+    margin-bottom: 10px;
 }
-.puzzle-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+.heading #job-title {
+    display: inline;
+    border-right: 2px solid #10313aba;
+    font-size: 18px;
 }
+
 .piece {
     height: 100px;
     width: 100px;
     background-color: black;
     position: absolute;
-    top: 5px;
-    left: 5px;
     cursor: pointer;
+}
+
+.piece.one{
+    background: url('../asset/io.gif');
+    right: 20px;
 }
