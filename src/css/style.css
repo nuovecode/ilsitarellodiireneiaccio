@@ -8,7 +8,7 @@ body {
 
 .heading {
     text-align: center;
-    padding: 20px 0;
+    padding: 0 0 25px 0;
 }
 .heading h1 {
     font-family: 'Orbitron', sans-serif;
@@ -20,16 +20,84 @@ body {
     border-right: 2px solid #10313aba;
     font-size: 18px;
 }
-
+.puzzle-container {
+    width: 450px;
+    height: 450px;
+    margin: 25px auto;
+    border: dotted 5px black;
+}
 .piece {
-    height: 100px;
-    width: 100px;
-    background-color: black;
+    height: 150px;
+    width: 150px;
     position: absolute;
     cursor: pointer;
 }
-
-.piece.one{
-    background: url('../asset/io.gif');
-    right: 20px;
+.piece {
+    background: url('../asset/photo.jpg');
+    background-size: 450px;
+    background-repeat: no-repeat;
+    -webkit-filter: contrast(1.3);
+    filter: contrast(1.3);
 }
+.piece:nth-child(1) {
+    background-position: 0 0;
+    left: 50%;
+    top: 430px;
+}
+.piece:nth-child(2) {
+    background-position: -150px 0;
+    left: 53%;
+    top: 270px;
+}
+.piece:nth-child(3) {
+    background-position: -300px 0;
+    left: 43%;
+    top: 230px;
+}
+.piece:nth-child(4) {
+    background-position: -0 -150px;
+    left: 58%;
+    top: 340px;
+}
+.piece:nth-child(5) {
+    background-position: -150px -150px;
+    left: 24%;
+    top: 350px;
+}
+.piece:nth-child(6) {
+    background-position: -300px -150px;
+    left: 66%;
+    top: 280px;
+}
+.piece:nth-child(7) {
+    background-position: 0 -300px;
+    left: 42%;
+    top: 420px;
+}
+.piece:nth-child(8) {
+    background-position: -150px -300px;
+    left: 33%;
+    top: 200px;
+}
+.piece:nth-child(9) {
+    background-position: -300px -300px;
+    left: 35%;
+    top: 360px;
+}
+
+/** Animated
+.piece {
+    background: url('../asset/animated.gif');
+    background-repeat: no-repeat;
+}
+.piece:nth-child(1){ background-position: -150px 0; }
+.piece:nth-child(2){ background-position: -300px 0; }
+.piece:nth-child(3){ background-position: -150px -150px; }
+.piece:nth-child(4){ background-position: -300px -150px; }
+.piece:nth-child(5){ background-position: -150px -300px; }
+.piece:nth-child(6){ background-position: -300px -300px; }
+.piece:nth-child(7){ background-position: -150px -450px; }
+.piece:nth-child(8){ background-position: -300px -450px; }
+.piece:nth-child(9){ background-position: -300px -600px; }
+.piece:nth-child(10){ background-position: -150px -600px; }
+**/
