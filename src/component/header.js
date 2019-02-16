@@ -1,5 +1,7 @@
 export class Header {
   render () {
-    return``
-  }
+    return`<div class="nav-icon">
+             <div></div>
+          </div>`
+    }
 }

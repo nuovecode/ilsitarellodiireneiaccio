@@ -1,4 +1,4 @@
-import { Home } from './pages/Home'
+import { Home } from './component/pages/Home'
 import { Header } from './component/header'
 import { Footer } from './component/footer'
 import './css/style.css'

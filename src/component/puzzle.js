@@ -5,22 +5,34 @@ export class Puzzle {
   }
   
   eventListeners() {
-    let app = document.getElementById("app")
-    app.addEventListener("dragstart", this.dragstart)
-    app.addEventListener("dragend", this.dragend)
-    app.addEventListener("dragover", this.dragover)
-    app.addEventListener("dragenter", this.dragenter)
-    app.addEventListener("dragleave", this.dragleave)
-    app.addEventListener("drop", this.drop)
+    let app = document.getElementById('app')
+    app.addEventListener('click', this.onClick)
+    app.addEventListener('dragstart', this.onDragstart)
+    app.addEventListener('dragend', this.onDragend)
+    app.addEventListener('dragover', this.onDragover)
+    app.addEventListener('dragenter', this.onDragenter)
+    app.addEventListener('dragleave', this.onDragleave)
+    app.addEventListener('drop', this.onDrop)
   }
   
-  dragstart(e) {
-    console.log('dragstart')
-    //console.log(e)
-  }
-  
-  dragend(e) {
+  onClick(e) {
+    e.preventDefault();
     if (e.target.classList.contains('piece')) {
+      let selected = document.querySelector('.selected')
+      if(selected) selected.classList.remove('active')
+      e.target.classList.add('selected')
+    }
+  }
+  
+  
+  onDragstart(e) {
+    console.log('dragstart')
+    // e.preventDefault()
+  }
+  
+  onDragend(e) {
+    if (e.target.classList.contains('piece')) {
+      e.target.classList.remove('moving')
       let left = e.clientX - (e.target.clientWidth / 2)
       let top = e.clientY - (e.target.clientHeight / 2)
       let position = 'left:' + left + 'px;top:' + top + 'px;'
@@ -28,27 +40,30 @@ export class Puzzle {
     }
   }
   
-  dragover(e) {
+  onDragover(e) {
     console.log('DRAGOVER')
-    e.preventDefault()
+    // e.preventDefault()
   }
   
-  dragenter(e) {
-    console.log('dragenter')
-    //console.log(e)
-    e.preventDefault()
-    
+  onDragenter(e) {
+    if (e.target.classList.contains('piece')) {
+      e.target.classList.add('moving')
+    }
   }
   
-  dragleave(e) {
+  onDragleave(e) {
+    e.preventDefault()
     console.log('dragleave')
     // console.log(e)
-    
   }
   
-  drop(e) {
+  onDrop(e) {
+    e.preventDefault()
     console.log('drop')
-    //console.log(e)
+    console.log(e)
+    document.querySelectorAll('.piece').forEach((piece) =>
+      console.log(piece)
+    )
   }
   
   render () {

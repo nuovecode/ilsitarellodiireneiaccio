@@ -1,7 +1,7 @@
 export class Title {
   
   constructor () {
-    this.words = ["Web something", "Frontend deve", "Javascript dev", "mannagg", "???" ];
+    this.words = ["Frontend deve", "Javascript program", "'lastframewok.js' user", "web ..something", "fuck the job title" ];
     this.loopNum = 0;
     this.interval = parseInt(1000, 10) || 1000;
     this.txt = '';
