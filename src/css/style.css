@@ -31,6 +31,10 @@ body {
 .social li a {
     color: #fff;
 }
+.social li a:hover {
+    color: #ffe400;
+}
+
 .social svg {
     width: 35px;
     fill: currentColor;
@@ -83,6 +87,7 @@ body {
 .piece {
     height: 150px;
     width: 150px;
+    /**transition: all 0.5s ease;**/
     position: absolute;
     cursor: grab;
 }

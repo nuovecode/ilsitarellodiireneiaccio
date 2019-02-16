@@ -1,18 +1,21 @@
-export class Puzzle {
+import { abstractComponent } from './abstract'
+
+export class Puzzle extends abstractComponent {
   
   constructor () {
+    super();
+    this.pieceNumber = 9
     this.eventListeners()
   }
   
   eventListeners() {
-    let app = document.getElementById('app')
-    app.addEventListener('click', this.onClick)
-    app.addEventListener('dragstart', this.onDragstart)
-    app.addEventListener('dragend', this.onDragend)
-    app.addEventListener('dragover', this.onDragover)
-    app.addEventListener('dragenter', this.onDragenter)
-    app.addEventListener('dragleave', this.onDragleave)
-    app.addEventListener('drop', this.onDrop)
+    this.app.addEventListener('click', this.onClick)
+    this.app.addEventListener('dragstart', this.onDragstart)
+    this.app.addEventListener('dragend', this.onDragend)
+    this.app.addEventListener('dragover', this.onDragover)
+    this.app.addEventListener('dragenter', this.onDragenter)
+    this.app.addEventListener('dragleave', this.onDragleave)
+    this.app.addEventListener('drop', this.onDrop)
   }
   
   onClick(e) {
@@ -68,15 +71,7 @@ export class Puzzle {
   
   render () {
     return`<div class="puzzle-container">
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
-              <div class="piece" draggable="true"></div>
+              ${`<div class="piece" draggable="true"></div>`.repeat(this.pieceNumber)}
            </div>`
   }
 }

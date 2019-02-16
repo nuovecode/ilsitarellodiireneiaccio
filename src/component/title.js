@@ -1,7 +1,10 @@
-export class Title {
+import { abstractComponent } from './abstract'
+
+export class Title extends abstractComponent {
   
   constructor () {
-    this.words = ["Frontend deve", "Javascript program", "'lastframewok.js' user", "web ..something", "fuck the job title" ];
+    super()
+    this.words = ["Frontend deve", "Javascript pr", "'lastframewok.js' user", "Magento", "web ..something", "fuck the job title" ];
     this.loopNum = 0;
     this.interval = parseInt(1000, 10) || 1000;
     this.txt = '';
