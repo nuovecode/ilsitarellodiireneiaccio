@@ -18,6 +18,7 @@ module.exports = {
       'meta': {
         'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
         'theme-color': '#f4ec00'
+        
       }
     })
   ],

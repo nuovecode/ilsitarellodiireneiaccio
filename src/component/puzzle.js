@@ -6,21 +6,24 @@ export class Puzzle extends abstractComponent {
   constructor () {
     super();
     this.pieceNumber = 9
-    this.eventListeners()
+    this.handleEventListeners()
   }
   
-  eventListeners() {
-    this.app.addEventListener('click', this.onClick)
-    this.app.addEventListener('dragstart', this.onDragstart)
-    this.app.addEventListener('dragend', this.onDragend)
-    this.app.addEventListener('dragover', this.onDragover)
-    this.app.addEventListener('dragenter', this.onDragenter)
-    this.app.addEventListener('dragleave', this.onDragleave)
-    this.app.addEventListener('drop', this.onDrop)
+  handleEventListeners() {
+    // dragover / dragstart
+    this.app.onclick = this.onClick.bind(this)
+    this.app.ondragend = this.onDragend.bind(this)
+    this.app.ondragleave = this.onDragleave.bind(this)
+    this.app.ondragenter = this.onDragenter.bind(this)
+    this.app.ondrop = this.onDrop.bind(this)
+  }
+  
+  isPuzzlePiece(e) {
+    return e.target.classList.contains('piece')
   }
   
   onClick(e) {
-    if (e.target.classList.contains('piece')) {
+    if (this.isPuzzlePiece(e)) {
       e.preventDefault();
       let selected = document.querySelector('.selected')
       if(selected) selected.classList.remove('active')
@@ -28,25 +31,15 @@ export class Puzzle extends abstractComponent {
     }
   }
   
-  
-  onDragstart(e) {
-    console.log('dragstart')
-    // e.preventDefault()
-  }
-  
   onDragend(e) {
-    if (e.target.classList.contains('piece')) {
+    if (this.isPuzzlePiece(e)) {
+      console.log('dragend')
       e.target.classList.remove('moving')
       let left = e.clientX - (e.target.clientWidth / 2)
       let top = e.clientY - (e.target.clientHeight / 2)
       let position = 'left:' + left + 'px;top:' + top + 'px;'
       setTimeout(()=> e.target.setAttribute('style', position), 0)
     }
-  }
-  
-  onDragover(e) {
-    console.log('DRAGOVER')
-    // e.preventDefault()
   }
   
   onDragenter(e) {
@@ -56,18 +49,19 @@ export class Puzzle extends abstractComponent {
   }
   
   onDragleave(e) {
-    e.preventDefault()
-    console.log('dragleave')
-    // console.log(e)
+    console.log(e)
+    if (this.isPuzzlePiece(e)) {
+      e.preventDefault()
+      console.log('dragleave')
+      console.log(e)
+      document.querySelectorAll('.piece').forEach((piece) =>
+        console.log(piece.clientHeight)
+      )
+    }
   }
   
   onDrop(e) {
     e.preventDefault()
-    console.log('drop')
-    console.log(e)
-    document.querySelectorAll('.piece').forEach((piece) =>
-      console.log(piece)
-    )
   }
   
   render () {

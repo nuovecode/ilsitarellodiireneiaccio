@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
-
 body {
     background: #ffe400;
     color: #10313a;
@@ -16,9 +15,24 @@ a {
 a:hover {
     text-decoration: none;
 }
+ul {
+    padding-left: 18px;
+    line-height: 1.5;
+}
+ul >li > a {
+    text-decoration: none;
+}
+ul >li > a:hover {
+    text-decoration: underline;
+}
 .heading {
+    padding: 20px 0 40px;
     text-align: center;
-    padding: 0 0 25px 0;
+}
+@media screen and (min-width: 700px) {
+    .heading {
+        padding: 0 0 25px 0;
+    }
 }
 .heading h1 {
     font-family: 'Orbitron', sans-serif;
@@ -41,6 +55,7 @@ h4 {
     font-size: 25px;
 }
 .social {
+    margin-top: 40px;
     text-align:center;
     padding:0;
 }
@@ -57,42 +72,15 @@ h4 {
     width: 35px;
     fill: currentColor;
 }
-
 .black-board {
     background: #10313a;
     color: #fff;
     padding: 25px;
 }
-.nav-icon {
-    margin: 1em;
-    width: 40px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
-.nav-icon:after,
-.nav-icon:before,
-.nav-icon div {
-    background-color: #10313a;
-    border-radius: 3px;
-    content: '';
-    display: block;
-    height: 5px;
-    margin: 7px 0;
-    transition: all .2s ease-in-out;
-}
-.nav-icon:hover:before {
-    transform: translateY(12px) rotate(135deg);
-}
-.nav-icon:hover:after {
-    transform: translateY(-12px) rotate(-135deg);
-}
-.nav-icon:hover div {
-    transform: scale(0);
-}
-.tags {
+ul.tags {
     list-style: none;
     padding: 0;
+    line-height: normal;
 }
 .tags li {
     display: inline-block;
