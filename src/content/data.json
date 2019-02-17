@@ -1,7 +1,7 @@
 {
   "name": "Irene Iaccio",
   "title": ["Frontend deve", "Javascript pr", "lastframewok.js user", "Magento", "web ..something", "fuck the job title" ],
-  "lovedTechnologies": ["Javascript", "NodeJs", "Vue.js", "React.js", "Elasticsearch", "Webpack"],
+  "lovedTechnologies": ["Javascript", "NodeJs", "Vue.js", "React.js", "Elasticsearch", "Webpack", "PWA"],
   "knownTechnologies":["Magento 1 e 2", "npm", "git", "Vuex", "vagrant","composer", "yarn", "css preprocessors", "Task runners","php"],
   "social": {
     "github": {
