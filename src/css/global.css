@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+body {
+    background: #ffe400;
+    color: #10313a;
+    font-family: Roboto;
+    margin: 0;
+}
+.heading {
+    text-align: center;
+    padding: 0 0 25px 0;
+}
+.heading h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+h4 {
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.heading #job-title {
+    display: inline;
+    border-right: 2px solid #10313aba;
+    font-size: 25px;
+}
+.social {
+    text-align:center;
+    padding:0;
+}
+.social li {
+  display: inline-block;
+}
+.social li a {
+    color: #fff;
+}
+.social li a:hover {
+    color: #ffe400;
+}
+.social svg {
+    width: 35px;
+    fill: currentColor;
+}
+
+.black-board {
+    background: #10313a;
+    color: #fff;
+    padding: 25px;
+}
+.nav-icon {
+    margin: 1em;
+    width: 40px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+    background-color: #10313a;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 5px;
+    margin: 7px 0;
+    transition: all .2s ease-in-out;
+}
+.nav-icon:hover:before {
+    transform: translateY(12px) rotate(135deg);
+}
+.nav-icon:hover:after {
+    transform: translateY(-12px) rotate(-135deg);
+}
+.nav-icon:hover div {
+    transform: scale(0);
+}
+.tags {
+    list-style: none;
+    padding: 0;
+}
+.tags li {
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-weight: 200;
+    margin: 0 10px 10px 0;
+}
+.footer {
+    background: #10313a;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 200;
+    padding: 25px 0 10px;
+}

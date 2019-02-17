@@ -1,7 +1,7 @@
 import { Home } from './component/pages/Home'
 import { Header } from './component/header'
 import { Footer } from './component/footer'
-import './css/style.css'
+import './css/global.css'
 
 const app = document.getElementById('app')
 

@@ -1,4 +1,5 @@
 import { abstractComponent } from './abstract'
+import '../css/puzzle.css'
 
 export class Puzzle extends abstractComponent {
   
@@ -19,8 +20,8 @@ export class Puzzle extends abstractComponent {
   }
   
   onClick(e) {
-    e.preventDefault();
     if (e.target.classList.contains('piece')) {
+      e.preventDefault();
       let selected = document.querySelector('.selected')
       if(selected) selected.classList.remove('active')
       e.target.classList.add('selected')

@@ -1,7 +1,9 @@
 import { abstractComponent } from './../abstract'
 import { Puzzle } from '../puzzle'
 import { Title } from '../title'
-import { Social } from '../social'
+import { Svg } from '../svg'
+import { Tags } from '../tags'
+let html = require('../../content/home.md')
 
 export class Home extends abstractComponent {
   
@@ -9,18 +11,25 @@ export class Home extends abstractComponent {
     super()
     this.puzzle = new Puzzle()
     this.title = new Title()
-    this.social = new Social()
+    this.icons = new Svg()
+    this.tag = new Tags()
   }
   
   render () {
     return`${this.title.render()}
            ${this.puzzle.render()}
            <div class="black-board">
-              <section>${this.social.render()}</section>
-              <section>Technologies I love</section>
-              <section>Pet projects</section>
-              <section>Passionate intermittently to</section>
-              <section>People I care</section>
+              <section>
+                 <h3>Toolbox</h3>
+                 <h4>Favorite</h4>
+                 ${this.tag.render('lovedTechnologies')}
+                 <h4>Other</h4>
+                 ${this.tag.render('knownTechnologies')}
+              </section>
+              <section>
+                  ${html}
+              </section>
+              ${this.icons.render('social')}
            </div>`
   }
 }

@@ -1,7 +1,6 @@
 import { abstractComponent } from './abstract'
-
 export class Footer extends abstractComponent {
   render () {
-    return`Made with no framework, no libraries, no html just for fun`
+    return`<div class="footer">Made with Vanilla and no html, just for fun</div>`
   }
 }

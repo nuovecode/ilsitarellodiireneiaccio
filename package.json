@@ -19,6 +19,7 @@
     "eslint-plugin-import": "^2.8.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "style-loader": "^0.20.1",
@@ -29,6 +30,7 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "markdown-loader": "^5.0.0",
     "promise-polyfill": "^7.1.0",
     "whatwg-fetch": "^2.0.3"
   }

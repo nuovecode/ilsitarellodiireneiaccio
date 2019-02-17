@@ -1,24 +1,24 @@
 import { abstractComponent } from './abstract'
+import data from '../content/data.json'
 
 export class Title extends abstractComponent {
   
   constructor () {
     super()
-    this.words = ["Frontend deve", "Javascript pr", "'lastframewok.js' user", "Magento", "web ..something", "fuck the job title" ];
-    this.loopNum = 0;
-    this.interval = parseInt(1000, 10) || 1000;
-    this.txt = '';
-    this.isDeleting = false;
+    this.loopNum = 0
+    this.interval = parseInt(1000, 10) || 1000
+    this.txt = ''
+    this.isDeleting = false
     this.typeText()
   }
   
   typeText () {
-    let i = this.loopNum % this.words.length
-    let fullTxt = this.words[i];
+    let i = this.loopNum % data.title.length
+    let fullTxt = data.title[i]
     if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
+      this.txt = fullTxt.substring(0, this.txt.length - 1)
     } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
+      this.txt = fullTxt.substring(0, this.txt.length + 1)
     }
   
     let jobTitle = document.getElementById("job-title")
@@ -39,7 +39,7 @@ export class Title extends abstractComponent {
   
   render () {
     return`<div class="heading">
-              <h1>Irene Iaccio</h1>
+              <h1>${data.name}</h1>
               <div id="job-title"></div>
            </div>`
   }

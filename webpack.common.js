@@ -49,6 +49,19 @@ module.exports = {
             name: '[name].[ext]?[hash]'
           }
         }
+      },
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: "html-loader"
+          },
+          {
+            loader: "markdown-loader",
+            options: {
+            }
+          }
+        ]
       }
     ]
   },
