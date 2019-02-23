@@ -4,23 +4,23 @@ import '../css/puzzle.css'
 export class Puzzle extends abstractComponent {
   
   constructor () {
-    super();
+    super()
     this.pieceNumber = 9
+    this.precision = 5
     this.handleEventListeners()
   }
   
   handleEventListeners() {
-    // dragover / dragstart
     this.app.onclick = this.onClick.bind(this)
     this.app.ondragend = this.onDragend.bind(this)
-    // this.app.ondragleave = this.onDragleave.bind(this)
     this.app.ondragenter = this.onDragenter.bind(this)
+    this.app.ondragover = this.onDragover.bind(this)
     this.app.ondrop = this.onDrop.bind(this)
   }
   
   onClick(e) {
     if (this.isPuzzlePiece(e)) {
-      e.preventDefault();
+      e.preventDefault()
       let selected = document.querySelector('.selected')
       if(selected) selected.classList.remove('active')
       e.target.classList.add('selected')
@@ -38,28 +38,52 @@ export class Puzzle extends abstractComponent {
   }
   
   onDragenter(e) {
+    e.preventDefault()
     if (e.target.classList.contains('piece')) {
       e.target.classList.add('moving')
     }
   }
   
-  onDragleave(e) {
+  onDragover(e) {
+    e.preventDefault()
+  }
+  
+  onDrop(e) {
     if (this.isPuzzlePiece(e)) {
       e.target.classList.add('dropped')
-      let topPositions = []
-      let leftPositions = []
       document.querySelectorAll('.piece:not(.dropped)').forEach((piece) => {
-          topPositions.push(piece.getBoundingClientRect().top)
-          leftPositions.push(piece.getBoundingClientRect().left)
+        let top = (piece.getBoundingClientRect().top + (e.target.clientHeight / 2)) - e.clientY
+        let left = Math.abs((piece.getBoundingClientRect().left + (e.target.clientWidth / 2)) -  e.clientX)
+        if(this.getNearestPiece(top, left, e) || this.getNearestPiece(left, top, e)) {
+          let topDifference = piece.getBoundingClientRect().top - e.clientY - (e.target.clientHeight / 2)
+          let leftDifference = piece.getBoundingClientRect().left - e.clientX - (e.target.clientWidth / 2)
+          let topPosition = 0
+          let leftPosition = 0
+          if(-this.precision < topDifference < this.precision) {
+            topPosition = piece.getBoundingClientRect().top
+            if (145 < leftDifference < 155) {
+              leftPosition = piece.getBoundingClientRect().left + 150
+            } else {
+              leftPosition = piece.getBoundingClientRect().left - 150
+            }
+          } else if(145 < topDifference < 155) {
+             topPosition = piece.getBoundingClientRect().top + 150
+             leftPosition = piece.getBoundingClientRect().left
+          } else {
+            topPosition = piece.getBoundingClientRect().top - 150
+            leftPosition = piece.getBoundingClientRect().left
+          }
+          let position = 'left:' + leftPosition + 'px;top:' + topPosition + 'px;'
+          e.target.setAttribute('style', position)
+          return
+        }
       })
-      let nearestTop = this.closestPosition(e.target.getBoundingClientRect().top + 10, topPositions)
-      let nearestLeft = this.closestPosition(e.target.getBoundingClientRect().left + 10, leftPositions)
       e.target.classList.remove('dropped')
     }
   }
   
-  onDrop(e) {
-    e.preventDefault()
+  getNearestPiece (value1, value2, e) {
+    return -this.precision < value1 < this.precision && (e.target.clientHeight -this.precision) < value2 < (e.target.clientHeight + this.precision)
   }
   
   isPuzzlePiece(e) {
