@@ -6,13 +6,11 @@ Dev
 ```
 
 Build
-
 ```
   npm run prod
 ```
 
 Publish
-
 ```
   git subtree push --prefix dist origin gh-pages
 ```
