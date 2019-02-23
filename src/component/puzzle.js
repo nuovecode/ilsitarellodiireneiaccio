@@ -13,13 +13,9 @@ export class Puzzle extends abstractComponent {
     // dragover / dragstart
     this.app.onclick = this.onClick.bind(this)
     this.app.ondragend = this.onDragend.bind(this)
-    this.app.ondragleave = this.onDragleave.bind(this)
+    // this.app.ondragleave = this.onDragleave.bind(this)
     this.app.ondragenter = this.onDragenter.bind(this)
     this.app.ondrop = this.onDrop.bind(this)
-  }
-  
-  isPuzzlePiece(e) {
-    return e.target.classList.contains('piece')
   }
   
   onClick(e) {
@@ -33,7 +29,6 @@ export class Puzzle extends abstractComponent {
   
   onDragend(e) {
     if (this.isPuzzlePiece(e)) {
-      console.log('dragend')
       e.target.classList.remove('moving')
       let left = e.clientX - (e.target.clientWidth / 2)
       let top = e.clientY - (e.target.clientHeight / 2)
@@ -49,19 +44,32 @@ export class Puzzle extends abstractComponent {
   }
   
   onDragleave(e) {
-    console.log(e)
     if (this.isPuzzlePiece(e)) {
-      e.preventDefault()
-      console.log('dragleave')
-      console.log(e)
-      document.querySelectorAll('.piece').forEach((piece) =>
-        console.log(piece.clientHeight)
-      )
+      e.target.classList.add('dropped')
+      let topPositions = []
+      let leftPositions = []
+      document.querySelectorAll('.piece:not(.dropped)').forEach((piece) => {
+          topPositions.push(piece.getBoundingClientRect().top)
+          leftPositions.push(piece.getBoundingClientRect().left)
+      })
+      let nearestTop = this.closestPosition(e.target.getBoundingClientRect().top + 10, topPositions)
+      let nearestLeft = this.closestPosition(e.target.getBoundingClientRect().left + 10, leftPositions)
+      e.target.classList.remove('dropped')
     }
   }
   
   onDrop(e) {
     e.preventDefault()
+  }
+  
+  isPuzzlePiece(e) {
+    return e.target.classList.contains('piece')
+  }
+  
+  closestPosition(e, positions) {
+    let index = positions.map((k) => Math.abs(k - e))
+    let min = Math.min.apply(Math, index)
+    return positions[index.indexOf(min)]
   }
   
   render () {
