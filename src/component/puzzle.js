@@ -33,7 +33,7 @@ export class Puzzle extends abstractComponent {
       let left = e.clientX - (e.target.clientWidth / 2)
       let top = e.clientY - (e.target.clientHeight / 2)
       let position = 'left:' + left + 'px;top:' + top + 'px;'
-      setTimeout(()=> e.target.setAttribute('style', position), 0)
+      e.target.setAttribute('style', position)
     }
   }
   
@@ -51,33 +51,34 @@ export class Puzzle extends abstractComponent {
   onDrop(e) {
     if (this.isPuzzlePiece(e)) {
       e.target.classList.add('dropped')
-      document.querySelectorAll('.piece:not(.dropped)').forEach((piece) => {
-        let top = (piece.getBoundingClientRect().top + (e.target.clientHeight / 2)) - e.clientY
-        let left = Math.abs((piece.getBoundingClientRect().left + (e.target.clientWidth / 2)) -  e.clientX)
-        if(this.getNearestPiece(top, left, e) || this.getNearestPiece(left, top, e)) {
-          let topDifference = piece.getBoundingClientRect().top - e.clientY - (e.target.clientHeight / 2)
-          let leftDifference = piece.getBoundingClientRect().left - e.clientX - (e.target.clientWidth / 2)
+      let pieces = document.querySelectorAll('.piece:not(.dropped)'), i
+      for (i = 0; i < pieces.length; ++i) {
+        let top = (pieces[i].getBoundingClientRect().top + (e.target.clientHeight / 2)) - e.clientY
+        let left = Math.abs((pieces[i].getBoundingClientRect().left + (e.target.clientWidth / 2)) -  e.clientX)
+        if( -5 < left < 5 && (e.target.clientHeight -5) < top < (e.target.clientHeight + 5) || -5 < top < 5 && (e.target.clientHeight -5) < left < (e.target.clientHeight + 5)) {
+          let topDifference = pieces[i].getBoundingClientRect().top - e.clientY - (e.target.clientHeight / 2)
+          let leftDifference = pieces[i].getBoundingClientRect().left - e.clientX - (e.target.clientWidth / 2)
           let topPosition = 0
           let leftPosition = 0
-          if(-this.precision < topDifference < this.precision) {
-            topPosition = piece.getBoundingClientRect().top
+          if(-this.precision < topDifference && topDifference < this.precision) {
+            topPosition = pieces[i].getBoundingClientRect().top
             if (145 < leftDifference < 155) {
-              leftPosition = piece.getBoundingClientRect().left + 150
+              leftPosition = pieces[i].getBoundingClientRect().left + 150
             } else {
-              leftPosition = piece.getBoundingClientRect().left - 150
+              leftPosition = pieces[i].getBoundingClientRect().left - 150
             }
           } else if(145 < topDifference < 155) {
-             topPosition = piece.getBoundingClientRect().top + 150
-             leftPosition = piece.getBoundingClientRect().left
+             topPosition = pieces[i].getBoundingClientRect().top + 150
+             leftPosition = pieces[i].getBoundingClientRect().left
           } else {
-            topPosition = piece.getBoundingClientRect().top - 150
-            leftPosition = piece.getBoundingClientRect().left
+            topPosition = pieces[i].getBoundingClientRect().top - 150
+            leftPosition = pieces[i].getBoundingClientRect().left
           }
           let position = 'left:' + leftPosition + 'px;top:' + topPosition + 'px;'
           e.target.setAttribute('style', position)
           return
         }
-      })
+      }
       e.target.classList.remove('dropped')
     }
   }
